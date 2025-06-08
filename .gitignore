@@ -1,0 +1,13 @@
+# Maven
+target/
+*.iml
+.idea/
+# Spring Boot
+*.log
+*.class
+# Environment
+.env
+application*.yml
+application*.properties
+# Docker
+docker-compose.yml
