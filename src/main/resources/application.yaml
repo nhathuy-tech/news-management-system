@@ -6,7 +6,7 @@ spring:
     name: NewsManagementSystem
     # Nếu không có, ứng dụng sẽ sử dụng tên mặc định là "application"
   datasource:
-    url: "jdbc:mysql://localhost:3307/news_portal"
+    url: "jdbc:mysql://localhost:3308/news_portal"
     # Nếu sai hoặc không có, có thể bị lỗi crash hoặc ném exception Cannot load JDBC driver or CommunicationsException or Access denied
     username: root
     password: 123123
@@ -21,7 +21,10 @@ spring:
       max-lifetime: 1800000         # 30 phút - thay connection mới để tránh stale connection
       connection-timeout: 20000     # 20s - giảm timeout để nhanh fail khi DB nghẽn
       validation-timeout: 5000      # 5s kiểm tra connection còn sống
-
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+    baseline-on-migrate: true
   jpa:
     properties:
       hibernate:
@@ -29,6 +32,5 @@ spring:
         # Nếu không có, Hibernate sẽ cố gắng đoán, nhưng có thể suy luận sai dialect hoặc SQL không chuẩn → lỗi khi query hoặc insert.
     hibernate:
       ddl-auto: update
-
     show-sql: true
     # Nếu không có, sẽ không hiển thị SQL trong console, khó debug.
