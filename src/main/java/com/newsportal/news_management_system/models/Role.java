@@ -1,8 +1,14 @@
 package com.newsportal.news_management_system.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "roles")
@@ -23,4 +29,31 @@ public class Role {
 
     @Column(name = "description")
     String description;
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @Builder.Default
+    Set<User> users = new HashSet<>();
+
+    // Helper methods để quản lý users
+    public void addUser(User user) {
+        this.users.add(user);
+        user.getRoles().add(this);
+    }
+
+    public void removeUser(User user) {
+        this.users.remove(user);
+        user.getRoles().remove(this);
+    }
+
+    // Convenience methods
+    public int getUserCount() {
+        return users.size();
+    }
+
+    public List<String> getUserEmails() {
+        return users.stream()
+                .map(User::getEmail)
+                .collect(Collectors.toList());
+    }
 }

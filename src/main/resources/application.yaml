@@ -34,3 +34,24 @@ spring:
       ddl-auto: update
     show-sql: true
     # Nếu không có, sẽ không hiển thị SQL trong console, khó debug.
+  redis:
+    host: localhost
+    port: 6379
+    password: # your redis password
+    database: 0
+    timeout: 2000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.boot.autoconfigure.security: DEBUG
+jwt:
+  secret: "1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij"
+  access-token-expiration: 3600  # 1 hour
+  refresh-token-expiration: 604800  # 7 days
