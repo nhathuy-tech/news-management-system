@@ -1,7 +1,7 @@
 package com.newsportal.news_management_system.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.newsportal.news_management_system.dtos.response.ApiResponse;
+import com.newsportal.news_management_system.common.dto.ApiResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

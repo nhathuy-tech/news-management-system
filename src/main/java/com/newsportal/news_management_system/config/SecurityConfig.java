@@ -1,6 +1,6 @@
 package com.newsportal.news_management_system.config;
 
-import com.newsportal.news_management_system.security.services.CustomUserDetailsService;
+import com.newsportal.news_management_system.features.auth.service.impl.UserDetailsServiceImpl;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -30,11 +30,10 @@ import javax.crypto.spec.SecretKeySpec;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SecurityConfig {
     // Các dependency sẽ được inject qua constructor
-    CustomUserDetailsService userDetailsService;
+    UserDetailsServiceImpl userDetailsService;
     JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     CustomAuthenticationProvider customAuthenticationProvider;
 
-    // Constants - không được inject vì là static
     static String[] PUBLIC_ENDPOINTS = {
         "/api/v1/auth/**",
         "/api/v1/users/**"

@@ -1,10 +1,10 @@
 package com.newsportal.news_management_system.config;
 
-import com.newsportal.news_management_system.exceptions.AppException;
-import com.newsportal.news_management_system.exceptions.ErrorCode;
-import com.newsportal.news_management_system.models.User;
-import com.newsportal.news_management_system.repositories.UserRepository;
-import com.newsportal.news_management_system.security.authorization.CustomUserPrincipal;
+import com.newsportal.news_management_system.common.exception.AppException;
+import com.newsportal.news_management_system.common.exception.ErrorCode;
+import com.newsportal.news_management_system.features.user.entity.User;
+import com.newsportal.news_management_system.features.user.repository.UserRepository;
+import com.newsportal.news_management_system.common.security.CustomUserPrincipal;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
